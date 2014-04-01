@@ -35,7 +35,10 @@ if [ $HAVEWGET -eq 1 ]
     #EA Utils
     wget https://ea-utils.googlecode.com/files/ea-utils.1.1.2-537.tar.gz
 else
-    echo "no wget"
+    curl http://sourceforge.net/projects/mummer/files/mummer/3.23/MUMmer3.23.tar.gz -o MUMmer3.23.tar.gz
+    curl http://sourceforge.net/projects/wgs-assembler/files/wgs-assembler/wgs-7.0/wgs-7.0.tar.bz2  -o wgs-7.0.tar.bz2 
+    curl http://www.cbcb.umd.edu/software/quake/downloads/quake-0.3.5.tar.gz -o quake-0.3.5.tar.gz
+    curl https://ea-utils.googlecode.com/files/ea-utils.1.1.2-537.tar.gz -o ea-utils.1.1.2-537.tar.gz
 fi
 
 #EC Tools
