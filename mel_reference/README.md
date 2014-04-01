@@ -1,3 +1,8 @@
+#Intro
+Notes on handling PACbio data collected by Casey Bergman in collab with PACbio and several others.
+
+It appears that scripts related to how the assembly was carried may not be available?
+
 ##Relevant links
 https://github.com/PacificBiosciences/DevNet/wiki/Drosophila-sequence-and-assembly
 
@@ -77,8 +82,8 @@ git clone https://github.com/PacificBiosciences/HBAR-DTK
 cd HBAR-DTK
 module load python/2.7.2
 python setup.py install --root  /data/apps/user_contributed_software/krthornt/hbar-dtk
-
 ```
+
 ###Falcon
 ```shell
 mkdir /data/apps/user_contributed_software/krthornt/falcon
@@ -86,4 +91,12 @@ git clone https://github.com/PacificBiosciences/FALCON.git
 module load python/2.7.2
 cd FALCON
 python setup.py install --root /data/apps/user_contributed_software/krthornt/falcon
+```
+
+###pbh5tools
+
+```
+mkdir /data/apps/user_contributed_software/krthornt/pbh5tools
+git clone https://github.com/PacificBiosciences/pbh5tools
+module load python/2.7.2
 ```
