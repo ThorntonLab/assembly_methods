@@ -133,3 +133,11 @@ make
 ```
 
 Output is lots of executables.  Put them somewhere in your user's $PATH.
+
+###EC Tools
+
+```
+git clone https://github.com/jgurtowski/ectools.git
+```
+
+Then it looks like you follow instructios in ectools/README
