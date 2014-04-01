@@ -1,0 +1,3 @@
+```shell
+bash getcode.sh
+```
