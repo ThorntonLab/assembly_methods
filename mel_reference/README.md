@@ -16,7 +16,45 @@ wget https://s3.amazonaws.com/datasets.pacb.com/2014/Drosophila/raw/Dro5_29NOV20
 wget https://s3.amazonaws.com/datasets.pacb.com/2014/Drosophila/raw/Dro6_1DEC2013_403.tgz
 ```
 
-Note that they are also in [SRA](http://www.ncbi.nlm.nih.gov/sra/?term=SRP040522), but I currently don't know how to bulk-download data like these from there.
+Note that they are also in [SRA](http://www.ncbi.nlm.nih.gov/sra/?term=SRP040522), but I currently don't know how to bulk-download data like these from there.  When you do download them, they come in as "file.sra", and contain the reads in fastq format, so you are not getting the raw data.  To pull the reads out of an SRA file, use SRA tools:
+
+```
+/data/users/krthornt/src/sra_sdk-2.3.4-2/linux/gcc/stat/x86_64/rel/bin/fastq-dump --split-files SRR1204689.sra
+```
+
+It is not clear to me what these warnings mean and if they are anything to be concerned about:
+```
+2014-04-01T19:01:22 fastq-dump.2.3.4 warn: too many reads 186 at spot id 8364, maximum 32 supported, skipped
+2014-04-01T19:01:22 fastq-dump.2.3.4 warn: too many reads 32 at spot id 9194, truncated to 32
+2014-04-01T19:01:23 fastq-dump.2.3.4 warn: too many reads 43 at spot id 14743, maximum 32 supported, skipped
+2014-04-01T19:01:23 fastq-dump.2.3.4 warn: too many reads 37 at spot id 16079, maximum 32 supported, skipped
+2014-04-01T19:01:25 fastq-dump.2.3.4 warn: too many reads 33 at spot id 29073, maximum 32 supported, skipped
+2014-04-01T19:01:26 fastq-dump.2.3.4 warn: too many reads 49 at spot id 38390, maximum 32 supported, skipped
+2014-04-01T19:01:28 fastq-dump.2.3.4 warn: too many reads 57 at spot id 51293, maximum 32 supported, skipped
+2014-04-01T19:01:28 fastq-dump.2.3.4 warn: too many reads 32 at spot id 54089, truncated to 32
+2014-04-01T19:01:28 fastq-dump.2.3.4 warn: too many reads 37 at spot id 58318, maximum 32 supported, skipped
+2014-04-01T19:01:29 fastq-dump.2.3.4 warn: too many reads 32 at spot id 59377, truncated to 32
+2014-04-01T19:01:31 fastq-dump.2.3.4 warn: too many reads 32 at spot id 77119, truncated to 32
+2014-04-01T19:01:31 fastq-dump.2.3.4 warn: too many reads 39 at spot id 80040, maximum 32 supported, skipped
+2014-04-01T19:01:31 fastq-dump.2.3.4 warn: too many reads 171 at spot id 81223, maximum 32 supported, skipped
+2014-04-01T19:01:32 fastq-dump.2.3.4 warn: too many reads 95 at spot id 92406, maximum 32 supported, skipped
+2014-04-01T19:01:33 fastq-dump.2.3.4 warn: too many reads 45 at spot id 98835, maximum 32 supported, skipped
+2014-04-01T19:01:34 fastq-dump.2.3.4 warn: too many reads 32 at spot id 103152, truncated to 32
+2014-04-01T19:01:35 fastq-dump.2.3.4 warn: too many reads 45 at spot id 110954, maximum 32 supported, skipped
+2014-04-01T19:01:35 fastq-dump.2.3.4 warn: too many reads 33 at spot id 112527, maximum 32 supported, skipped
+2014-04-01T19:01:35 fastq-dump.2.3.4 warn: too many reads 141 at spot id 113083, maximum 32 supported, skipped
+2014-04-01T19:01:37 fastq-dump.2.3.4 warn: too many reads 49 at spot id 126224, maximum 32 supported, skipped
+2014-04-01T19:01:37 fastq-dump.2.3.4 warn: too many reads 129 at spot id 126303, maximum 32 supported, skipped
+2014-04-01T19:01:37 fastq-dump.2.3.4 warn: too many reads 47 at spot id 132259, maximum 32 supported, skipped
+2014-04-01T19:01:38 fastq-dump.2.3.4 warn: too many reads 32 at spot id 133896, truncated to 32
+2014-04-01T19:01:38 fastq-dump.2.3.4 warn: too many reads 37 at spot id 138740, maximum 32 supported, skipped
+2014-04-01T19:01:38 fastq-dump.2.3.4 warn: too many reads 49 at spot id 140200, maximum 32 supported, skipped
+2014-04-01T19:01:40 fastq-dump.2.3.4 warn: too many reads 32 at spot id 152284, truncated to 32
+2014-04-01T19:01:40 fastq-dump.2.3.4 warn: too many reads 85 at spot id 162890, maximum 32 supported, skipped
+Rejected 20 SPOTS because of to many READS
+Read 163482 spots for SRR1204689.sra
+Written 163450 spots for SRR1204689.sra
+```
 
 ##Installing PACbio's tools as modules on UCI HPC
 
