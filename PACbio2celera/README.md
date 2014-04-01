@@ -10,7 +10,7 @@ scripts that I use now, so I'll send that to you probably tomorrow.
 
 Programs needed:
 
-MUMmer 3.23 (latest version)
+MUMmer 3.23 (latest version
 http://mummer.sourceforge.net/
 
 Python 2.7.2 (2.7.6 is probably ok.  Not python 3.*)
@@ -48,7 +48,7 @@ Failed versions:
 </ol>
 
 ```shell
-wget http://sourceforge.net/projects/mummer/files/latest/download?source=files
+wget http://sourceforge.net/projects/mummer/files/mummer/3.23/MUMmer3.23.tar.gz
 tar xzf MUMmer3.23.tar.gz 
 cd MUMmer3.23
 ```
@@ -78,7 +78,7 @@ NEEDS FIXING / MORE INFO FROM JIM AND/OR ANDY
 To get version 7.0 source code, which compiles fine with gcc 4.8.2:
 
 ```
-http://sourceforge.net/projects/wgs-assembler/files/wgs-assembler/wgs-7.0/wgs-7.0.tar.bz2/download
+wget http://sourceforge.net/projects/wgs-assembler/files/wgs-assembler/wgs-7.0/wgs-7.0.tar.bz2
 tar xjf wgs-7.0.tar.bz2
 cd wgs-7.0/kmer
 make
