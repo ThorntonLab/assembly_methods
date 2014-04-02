@@ -100,3 +100,62 @@ mkdir /data/apps/user_contributed_software/krthornt/pbh5tools
 git clone https://github.com/PacificBiosciences/pbh5tools
 module load python/2.7.2
 ```
+
+###WGS 8.1
+
+This works on UCI HPC:
+
+Note, this line in samtools/Makefile may need editing from:
+
+```
+$(CC) $(CFLAGS) -o $@ $(AOBJS) $(LDFLAGS) libbam.a -Lbcftools -lbcf $(LIBPATH) $(LIBCURSES) -lm -lz -lpthread 
+```
+
+to
+
+```
+$(CC) $(CFLAGS) -o $@ $(AOBJS) $(LDFLAGS) libbam.a -Lbcftools -lbcf $(LIBPATH) $(LIBCURSES) -lm -lz -lpthread -ltinfo 
+```
+
+on some systems.
+
+Following that edit, to compile:
+
+```
+wget http://sourceforge.net/projects/wgs-assembler/files/wgs-assembler/wgs-8.1/wgs-8.1.tar.bz2
+tar xjf wgs-8.1.tar.bz2
+cd wgs-8.1
+cd kmer && make install && cd ..
+cd samtools && make && cd ..
+cd src && make && cd ..
+```
+
+On my system, binaries are found in:
+
+```
+find . -name bin
+./kmer/Linux-amd64/bin
+./Linux-amd64/bin
+[krthornt@hpc-login-1-2 wgs-8.1]$ ls ./kmer/Linux-amd64/bin
+asmMerQC        existDB  mapMers-depth  maskMers  meryl           percentCovered  simple          testPositionBias  test-seqStream
+compare-counts  mapMers  mask           mervin    mt19937ar-test  positionDB      test-merStream  test-seqCache
+[krthornt@hpc-login-1-2 wgs-8.1]$ ls Linux-amd64/bin/
+addReadsToUnitigs    cgw                     dumpCloneMiddles            frgs2clones                overlap_partition        sffToCA
+analyzeBest          cgwDump                 dumpPBRLayoutStore          gatekeeper                 overlapStats             show-corrects
+analyzePosMap        chimChe                 dumpSingletons              gatekeeperbench            overlapStore             splitUnitigs
+analyzeScaffolds     chimera                 estimate-mer-threshold      gkpStoreCreate             overlapStoreBucketizer   terminator
+asmOutputFasta       classifyMates           extendClearRanges           gkpStoreDumpFASTQ          overlapStoreBuild        TIGR
+asmOutputStatistics  classifyMatesApply      extendClearRangesPartition  greedyFragmentTiling       overlapStoreIndexer      tigStore
+asmToAGP.pl          classifyMatesPairwise   extractmessages             greedy_layout_to_IUM       overlapStoreSorter       tracearchiveToCA
+bogart               computeCoverageStat     fastaToCA                   initialTrim                overmerry                tracedb-to-frg.pl
+bogus                convert-fasta-to-v2.pl  fastqAnalyze                markUniqueUnique           pacBioToCA               trimFastqByQVWindow
+bogusness            convertOverlap          fastqSample                 mercy                      remove_fragment          uidclient
+buildPosMap          convertSamToCA          fastqSimulate               mergeqc.pl                 removeMateOverlap        unitigger
+buildRefContigs      convertToPBCNS          fastqSimulate-sort          merTrim                    replaceUIDwithName       upgrade-v8-to-v9
+buildUnitigs         correct-frags           fastqToCA                   merTrimApply               resolveSurrogates        upgrade-v9-to-v10
+ca2ace.pl            correct-olaps           filterOverlap               meryl                      rewriteCache             utg2fasta
+caqc_help.ini        correctPacBio           finalTrim                   metagenomics_ovl_analyses  runCA                    utgcns
+caqc.pl              ctgcns                  fixUnitigs                  olap-from-seeds            runCA-dedupe             utgcnsfix
+cat-corrects         deduplicate             fragmentDepth               outputLayout               runCA-overlapStoreBuild
+cat-erates           demotePosMap            fragsInVars                 overlapInCore              run_greedy.csh
+```
